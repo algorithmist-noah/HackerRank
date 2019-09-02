@@ -2,7 +2,6 @@ using System;
 using System.Numerics;
 class Solution
 {
-
     static void Main(String[] args)
     {
         int t = Convert.ToInt32(Console.ReadLine());
@@ -10,11 +9,13 @@ class Solution
         {
             int n = Convert.ToInt32(Console.ReadLine());
 
+            int modifiedN = n - 1;
+
             BigInteger totalSum = 0;
 
-            BigInteger factor3 = (n - 1) / 3;
-            BigInteger factor5 = (n - 1) / 5;
-            BigInteger factor15 = (n - 1) / 15;
+            BigInteger factor3 = modifiedN / 3;
+            BigInteger factor5 = modifiedN / 5;
+            BigInteger factor15 = modifiedN / 15;
 
 
             totalSum += 3 * (factor3 * (factor3 + 1) / 2);
