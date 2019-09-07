@@ -1,48 +1,44 @@
 using System;
-
-namespace TestProject
+class Solution
 {
-    class Program
+    static bool CheckIfPalindome(string str)
     {
-        static bool CheckIfPalindome(string str)
+        var isPalindrome = true;
+
+        for (int i = 0, j = str.Length - 1; i < j; i++, j--)
         {
-            var isPalindrome = true;
-
-            for (int i = 0, j = str.Length - 1; i < j; i++, j--)
+            if (str[i] != str[j])
             {
-                if (str[i] != str[j])
-                {
-                    return false;
-                }
+                return false;
             }
-
-            return isPalindrome;
         }
 
-        static void Main(String[] args)
+        return isPalindrome;
+    }
+
+    static void Main(String[] args)
+    {
+        int t = Convert.ToInt32(Console.ReadLine());
+        for (int a0 = 0; a0 < t; a0++)
         {
-            int t = Convert.ToInt32(Console.ReadLine());
-            for (int a0 = 0; a0 < t; a0++)
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            var largestPalindrome = 101101;
+
+            for (int i = 100; i < 999; i++)
             {
-                int n = Convert.ToInt32(Console.ReadLine());
-
-                var largestPalindrome = 101101;
-
-                for (int i = 100; i < 999; i++)
+                for (int j = 100; j < 999; j++)
                 {
-                    for (int j = 100; j < 999; j++)
-                    {
-                        var multiple = i * j;
+                    var multiple = i * j;
 
-                        if (multiple > largestPalindrome && multiple < n && CheckIfPalindome(multiple.ToString()))
-                        {
-                            largestPalindrome = multiple;
-                        }
+                    if (multiple > largestPalindrome && multiple < n && CheckIfPalindome(multiple.ToString()))
+                    {
+                        largestPalindrome = multiple;
                     }
                 }
-
-                Console.WriteLine(largestPalindrome);
             }
+
+            Console.WriteLine(largestPalindrome);
         }
     }
 }
