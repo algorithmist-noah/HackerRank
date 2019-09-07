@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 class Solution
 {
 
@@ -9,20 +10,24 @@ class Solution
         {
             int n = Convert.ToInt32(Console.ReadLine());
 
-            int smallestMultiple = n;
+            BigInteger smallestMultiple = 1;
 
-            int limitStartingPoint = n - 1;
-
-            for (int i = limitStartingPoint; i > 1;)
+            for (int i = 1; i <= n; i++)
             {
-                if (smallestMultiple % i != 0)
+                for (int j = 1; j < i; j++)
                 {
-                    smallestMultiple += n;
-                    i = limitStartingPoint;
-                }
-                else
-                {
-                    i--;
+                    var k = smallestMultiple * j;
+
+                    if (k % i == 0)
+                    {
+                        smallestMultiple = k;
+                        break;
+                    }
+
+                    if (j == i - 1)
+                    {
+                        smallestMultiple = i * smallestMultiple;
+                    }
                 }
             }
 
