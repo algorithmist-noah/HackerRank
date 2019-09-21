@@ -12,6 +12,8 @@ class Solution
         {
             string[] grid_temp = Console.ReadLine().Split(' ');
             grid[grid_i] = Array.ConvertAll(grid_temp, Int32.Parse);
+
+
         }
     }
 }
